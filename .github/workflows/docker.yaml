@@ -3,7 +3,6 @@ name: .NET
 on:
   push:
     branches: [ "develop","main" ]
-  
  
 
 jobs:
@@ -12,25 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Chechout
+    - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 3.1.x
-
-    - name: Restore dependencies
-      run: dotnet restore
-      working-directory: ./HelperAPI/HelperAPI
-
-
-    - name: Build 
-      run: dotnet build --no-restore
-      working-directory: ./HelperAPI/HelperAPI
-
-
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-      working-directory: ./HelperAPI/HelperAPI
+    - name: Build Image
+      uses: docker/setup-buildx-action@v2.2.1
+        
+    
 
