@@ -3,8 +3,9 @@ name: .NET
 on:
   push:
     branches: [ "develop","main" ]
-  
- 
+    
+env:
+  WORKING_DIR: ./HelperAPI/HelperAPI
 
 jobs:
   build:
@@ -22,15 +23,15 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ./HelperAPI/HelperAPI
+      working-directory: ${{ env.WORKING_DIR }}
 
 
     - name: Build 
       run: dotnet build --no-restore
-      working-directory: ./HelperAPI/HelperAPI
+      working-directory: ${{ env.WORKING_DIR }}
 
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      working-directory: ./HelperAPI/HelperAPI
+      working-directory: ${{ env.WORKING_DIR }}
 
