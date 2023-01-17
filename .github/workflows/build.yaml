@@ -6,6 +6,7 @@ on:
     
 env:
   WORKING_DIR: ./HelperAPI/HelperAPI
+  OUTPUT: ~/output
 
 jobs:
   build:
@@ -44,4 +45,14 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
       working-directory: ${{ env.WORKING_DIR }}
+      
+    - name: Pack      
+      working-directory: ${{ env.WORKING_DIR }}
+      run: dotnet publish --configuration Release --output $OUTPUT
+      
+    - name: Create Deliverable
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: Build Result
+        path: ${{ env.OUTPUT }}
 
