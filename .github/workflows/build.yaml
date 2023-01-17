@@ -11,12 +11,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    env:
-      OUTPUT: ${{env.GITHUB_WORKSPACE}}/output
       
     steps:
     - name: Environment
+      env:
+        OUTPUT: ${{env.GITHUB_WORKSPACE}}/output
       run: printenv
       
     - name: Develop
