@@ -6,7 +6,7 @@ on:
     
 env:
   WORKING_DIR: ./HelperAPI/HelperAPI
-  OUTPUT: ${{GITHUB_WORKSPACE}}/output
+  OUTPUT: ${{env.GITHUB_WORKSPACE}}/output
 
 jobs:
   build:
