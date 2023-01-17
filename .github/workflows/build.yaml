@@ -14,9 +14,10 @@ jobs:
       
     steps:
     - name: Environment
-      env:
-        OUTPUT: ${{env.GITHUB_WORKSPACE}}/output
-      run: printenv
+      run: | 
+        echo "OUTPUT=$GITHUB_WORKSPACE/output" >> $GITHUB_ENV
+        echo "Output folder is:"
+        echo "$OUTPUT"
       
     - name: Develop
       if: ${{ env.GITHUB_REF == 'refs/heads/develop' }}
