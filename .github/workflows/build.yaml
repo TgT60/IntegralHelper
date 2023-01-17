@@ -6,13 +6,15 @@ on:
     
 env:
   WORKING_DIR: ./HelperAPI/HelperAPI
-  OUTPUT: ${{env.GITHUB_WORKSPACE}}/output
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
+    env:
+      OUTPUT: ${{env.GITHUB_WORKSPACE}}/output
+      
     steps:
     - name: Environment
       run: printenv
