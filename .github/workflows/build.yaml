@@ -24,7 +24,7 @@ jobs:
 
     - name: Build 
       run: dotnet build --no-restore
-      working-directory: ./HelperAPI/HelperAPI.sln
+      working-directory: ./HelperAPI/HelperAPI
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
