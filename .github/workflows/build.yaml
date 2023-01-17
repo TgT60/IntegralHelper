@@ -15,6 +15,13 @@ jobs:
     steps:
     - name: Environment
       run: printenv
+      
+    - name: Develop
+      if: ${{ env.GITHUB_REF == 'refs/heads/develop' }}
+      run: echo "Running on develop"
+    - name: Main      
+      if: ${{ env.GITHUB_REF == 'refs/heads/main' }}
+      run: echo "Running on main"
     
     - name: Chechout
       uses: actions/checkout@v3
