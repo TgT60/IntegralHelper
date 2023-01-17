@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Environment
+      run: printenv
+    
     - name: Chechout
       uses: actions/checkout@v3
 
