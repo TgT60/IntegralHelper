@@ -20,10 +20,11 @@ jobs:
         dotnet-version: 3.1.x
 
     - name: Restore dependencies
-      run: dotnet restore ./HelperAPI/HelperAPI.sln
+      run: cd ./HelperAPI && dotnet restore
 
-    - name: Build
+    - name: Build 
       run: dotnet build --no-restore
+      working-directory: ./HelperAPI/HelperAPI.sln
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
