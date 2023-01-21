@@ -1,7 +1,10 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
+<<<<<<< HEAD
+=======
 ENV VAR=VAL
+>>>>>>> fccc342025b4a7bc7e6eefdde69f10986d28727c
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -15,7 +18,11 @@ WORKDIR "/src/HelperAPI"
 RUN dotnet build "HelperAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
+<<<<<<< HEAD
+RUN dotnet publish "HelperAPI.csproj" -c Release -o /app/publish
+=======
 RUN dotnet publish "HelperAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
+>>>>>>> fccc342025b4a7bc7e6eefdde69f10986d28727c
 
 FROM base AS final
 WORKDIR /app

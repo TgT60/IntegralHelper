@@ -3,14 +3,29 @@ name: .NET
 on:
   push:
     branches: [ "develop","main" ]
-  
+    
+env:
+  WORKING_DIR: ./HelperAPI/HelperAPI
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
+      
     steps:
+    - name: Environment
+      run: | 
+        echo "OUTPUT=$GITHUB_WORKSPACE/output" >> $GITHUB_ENV
+        echo "Output folder is:"
+        echo "$OUTPUT"
+      
+    - name: Develop
+      if: ${{ env.GITHUB_REF == 'refs/heads/develop' }}
+      run: echo "Running on develop"
+    - name: Main      
+      if: ${{ env.GITHUB_REF == 'refs/heads/main' }}
+      run: echo "Running on main"
+    
     - name: Chechout
       uses: actions/checkout@v3
 
@@ -20,10 +35,26 @@ jobs:
         dotnet-version: 3.1.x
 
     - name: Restore dependencies
-      run: dotnet restore ./HelperAPI/HelperAPI.sln
+      run: dotnet restore
+      working-directory: ${{ env.WORKING_DIR }}
 
-    - name: Build
+
+    - name: Build 
       run: dotnet build --no-restore
+      working-directory: ${{ env.WORKING_DIR }}
+
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: ${{ env.WORKING_DIR }}
+      
+    - name: Pack      
+      working-directory: ${{ env.WORKING_DIR }}
+      run: dotnet publish --configuration Release --output $OUTPUT
+      
+    - name: Create Deliverable
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: Build Result
+        path: ${{ env.OUTPUT }}
+
