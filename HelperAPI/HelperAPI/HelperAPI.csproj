@@ -12,7 +12,22 @@
 
   </PropertyGroup>
 
+
+
   <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.32" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.32" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
   </ItemGroup>
 
@@ -24,6 +39,13 @@
 
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
 
+    <PackageReference Include="NSwag.AspNetCore" Version="13.18.2" />
+
+    <PackageReference Include="NSwag.MSBuild" Version="13.18.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
   </ItemGroup>
 
 
@@ -34,22 +56,23 @@
 
     <Folder Include="Areas\Admin\Views\" />
 
-    <Folder Include="Controllers\" />
-
     <Folder Include="Domain\" />
 
     <Folder Include="Models\ViewComponents\" />
-
-    <Folder Include="Service\" />
 
     <Folder Include="wwwroot\css\" />
 
     <Folder Include="wwwroot\images\" />
 
-    <Folder Include="wwwroot\js\" />
-
     <Folder Include="wwwroot\sass\" />
 
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+    <None Include="compilerconfig.json" />
   </ItemGroup>
 
 

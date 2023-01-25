@@ -1,4 +1,4 @@
-﻿<title>Two Column 2 - Halcyonic by HTML5 UP</title>
+﻿@using HelperAPI.Service
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 @if (ViewBag.Title != null)
@@ -7,7 +7,7 @@
 }
 else
 {
-    <title>My company</title>
+    <title>@Config.CompanyName</title>
 }
 
 @if (ViewBag.Description != null)
