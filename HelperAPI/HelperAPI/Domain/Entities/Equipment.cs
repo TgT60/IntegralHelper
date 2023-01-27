@@ -13,6 +13,6 @@ namespace HelperAPI.Domain.Entities
 
         public string Img { get; set; }
 
-        public string Discription { get; set; }
+        public string Description { get; set; }
     }
 }
