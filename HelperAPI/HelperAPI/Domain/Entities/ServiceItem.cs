@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace HelperAPI.Domain.Entities
 {
-    public class User
+    public class ServiceItem
     {
         public Guid Id { get; set; }
 
-        public string Login { get; set; }
+        public string Title { get; set; }
 
-        public string Password { get; set; }
+        public string ShortDescription { get; set; }
 
-        public Worker Worker { get; set; }
+        public string LongDescripton { get; set; }
     }
 }
